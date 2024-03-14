@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body style="margin:0;padding:0;position:fixed;top:0;left:0;outline:none">
+<canvas id='mycanvas' style="display:none;margin:0;padding:0;border:1px solid #000000;">
+</canvas>
+
+<div id="splash" style="font-size:100px"> Loading...<br>
+</div>
+
+
+<script>
+const canvas = document.querySelector("canvas");
+
+function resize(){
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  try{
+    draw(game_data['states'][current_state]['bk_img_loaded']);
+  }catch(err){
+   }
+
+}
+
+resize()
+window.addEventListener('resize', resize)
+
+var current_state;
+var game_data;
+
+
+
+$.getJSON( "data/map.json", function( data ) {
+        game_data = data;
+        current_state = data['start_state'];
+        load_imgs();
+
+});
+
+function load_imgs() {
+    var totalImages = 0;
+    var loadedImages = 0;
+
+    for (var key in game_data['states']) {
+        if (game_data['states'][key]['bk_img'] != null) {
+            totalImages++;
+            game_data['states'][key]['bk_img_loaded'] = new Image();
+            game_data['states'][key]['bk_img_loaded'].onload = function() {
+                loadedImages++;
+                if (loadedImages === totalImages) {
+                    console.log("All images loaded successfully.");
+                    all_loaded();
+                }
+            };
+            game_data['states'][key]['bk_img_loaded'].src = game_data['states'][key]['bk_img'];
+            console.log("Loading: " + key, game_data['states'][key]['bk_img']);
+        }
+    }
+    console.log("Total images to load:", totalImages);
+}
+
+function draw(img) {
+  var ctx = canvas.getContext('2d');
+  ctx.drawImage(img, 0, 0,  canvas.width,  canvas.height);
+}
+
+function draw_src(src, x, y, w, h) {
+  var ctx = canvas.getContext('2d');
+  var img = new Image();
+  img.onload = function() {
+    ctx.drawImage(img, x, y, w, h);
+  };
+  img.src = src;
+}
+
+function all_loaded() {
+    draw(game_data['states']['1-1_east']['bk_img_loaded']); 
+	console.log("Did I even get out of Draw?");
+    console.log(current_state);
+    $('#splash').hide();
+    console.log("did I try to hide splash?");
+    $('#mycanvas').show();
+    console.log("did I try to show canvas?");
+}
+
+
+
+const up_arrow = 38;
+const space = 32;
+const left_arrow = 37;
+const right_arrow = 39;
+
+document.body.onkeydown = function(e){
+	//alert(String.fromCharCode(e.keyCode)+" --> "+e.keyCode);
+	key_input(e.keyCode)
+};
+
+function key_input(what_key){
+    for(i=0; i< game_data['states'][current_state]['next_state'].length; i++){
+        if( what_key == game_data['states'][current_state]['next_state'][i]['key_input']) {
+            if ( typeof game_data['states'][current_state]['next_state'][i]['state_name'] == "string"){
+               next_state(game_data['states'][current_state]['next_state'][i]['state_name'])
+            }
+        } 
+    }
+
+    console.log(what_key);
+}
+
+function next_state(state) {
+    console.log("Current State = " + current_state + " --> New State= " + state);
+    current_state = state;
+
+    if (!game_data['states'][current_state]) {
+        console.error("State data for state " + current_state + " is undefined!");
+        return;
+    }
+
+    if (game_data['states'][current_state]['bk_img_loaded'].complete) {
+        draw(game_data['states'][current_state]['bk_img_loaded']);
+    } else {
+        game_data['states'][current_state]['bk_img_loaded'].onload = function() {
+            draw(game_data['states'][current_state]['bk_img_loaded']);
+        };
+    }
+
+    if (game_data['states'][current_state]['other_imgs'] != null) {
+        for (var i = 0; i < game_data['states'][current_state]['other_imgs'].length; i++) {
+            console.log(game_data['states'][current_state]['other_imgs'][i]['src']);
+            draw_src(
+                game_data['states'][current_state]['other_imgs'][i]['src'],
+                game_data['states'][current_state]['other_imgs'][i]['x_cord'],
+                game_data['states'][current_state]['other_imgs'][i]['y_cord'],
+                game_data['states'][current_state]['other_imgs'][i]['width'],
+                game_data['states'][current_state]['other_imgs'][i]['height']
+            );
+        }
+    }
+}
+
+
+
+
+</script>
+
+</body>
+</html>
