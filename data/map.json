@@ -54,11 +54,14 @@
 				{
 					"state_name": "1-1_west",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"1-2_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/1-2_east.png",
 			"next_state": [
 				{
 					"state_name": "1-2_north",
@@ -75,7 +78,7 @@
 			]
 		},
 		"1-2_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/1-2_north.png",
 			"next_state": [
 				{
 					"state_name": "1-2_west",
@@ -88,7 +91,7 @@
 			]
 		},
 		"1-2_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/1-2_west.png",
 			"next_state": [
 				{
 					"state_name": "1-2_south",
@@ -105,7 +108,7 @@
 			]
 		},
 		"1-2_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/1-2_south_A.png",
 			"next_state": [
 				{
 					"state_name": "1-2_east",
@@ -114,11 +117,14 @@
 				{
 					"state_name": "1-2_west",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"1-3_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/1-3_east.png",
 			"next_state": [
 				{
 					"state_name": "1-3_north",
@@ -135,7 +141,7 @@
 			]
 		},
 		"1-3_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/1-3_north.png",
 			"next_state": [
 				{
 					"state_name": "1-3_west",
@@ -152,7 +158,7 @@
 			]
 		},
 		"1-3_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/1-3_west.png",
 			"next_state": [
 				{
 					"state_name": "1-3_south",
@@ -169,7 +175,7 @@
 			]
 		},
 		"1-3_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/1-3_south_A.png",
 			"next_state": [
 				{
 					"state_name": "1-3_east",
@@ -178,11 +184,14 @@
 				{
 					"state_name": "1-3_west",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"1-4_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/1-4_east.png",
 			"next_state": [
 				{
 					"state_name": "1-4_north",
@@ -199,7 +208,7 @@
 			]
 		},
 		"1-4_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/1-4_north.png",
 			"next_state": [
 				{
 					"state_name": "1-4_west",
@@ -212,7 +221,7 @@
 			]
 		},
 		"1-4_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/1-4_west.png",
 			"next_state": [
 				{
 					"state_name": "1-4_south",
@@ -229,7 +238,7 @@
 			]
 		},
 		"1-4_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/1-4_south_A.png",
 			"next_state": [
 				{
 					"state_name": "1-4_east",
@@ -238,11 +247,14 @@
 				{
 					"state_name": "1-4_west",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"1-5_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/1-5_east.png",
 			"next_state": [
 				{
 					"state_name": "1-5_north",
@@ -259,7 +271,7 @@
 			]
 		},
 		"1-5_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/1-5_north_A.png",
 			"next_state": [
 				{
 					"state_name": "1-5_west",
@@ -268,11 +280,14 @@
 				{
 					"state_name": "1-5_east",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"1-5_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/1-5_west.png",
 			"next_state": [
 				{
 					"state_name": "1-5_south",
@@ -285,7 +300,7 @@
 			]
 		},
 		"1-5_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/1-5_south_A.png",
 			"next_state": [
 				{
 					"state_name": "1-5_east",
@@ -294,11 +309,14 @@
 				{
 					"state_name": "1-5_west",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"2-3_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/2-3_east.png",
 			"next_state": [
 				{
 					"state_name": "2-3_north",
@@ -311,7 +329,7 @@
 			]
 		},
 		"2-3_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/2-3_north.png",
 			"next_state": [
 				{
 					"state_name": "2-3_west",
@@ -328,7 +346,7 @@
 			]
 		},
 		"2-3_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/2-3_west.png",
 			"next_state": [
 				{
 					"state_name": "2-3_south",
@@ -341,7 +359,7 @@
 			]
 		},
 		"2-3_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/2-3_south.png",
 			"next_state": [
 				{
 					"state_name": "2-3_east",
@@ -358,7 +376,7 @@
 			]
 		},
 		"3-1_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/3-1_east.png",
 			"next_state": [
 				{
 					"state_name": "3-1_north",
@@ -371,7 +389,7 @@
 			]
 		},
 		"3-1_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/3-1_north.png",
 			"next_state": [
 				{
 					"state_name": "3-1_west",
@@ -384,7 +402,7 @@
 			]
 		},
 		"3-1_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/3-1_west.png",
 			"next_state": [
 				{
 					"state_name": "3-1_south",
@@ -401,7 +419,7 @@
 			]
 		},
 		"3-1_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/3-1_south.png",
 			"next_state": [
 				{
 					"state_name": "3-1_east",
@@ -414,7 +432,7 @@
 			]
 		},
 		"3-2_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/3-2_east.png",
 			"next_state": [
 				{
 					"state_name": "3-2_north",
@@ -431,7 +449,7 @@
 			]
 		},
 		"3-2_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/3-2_north.png",
 			"next_state": [
 				{
 					"state_name": "3-2_west",
@@ -444,7 +462,7 @@
 			]
 		},
 		"3-2_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/3-2_west.png",
 			"next_state": [
 				{
 					"state_name": "3-2_south",
@@ -461,7 +479,7 @@
 			]
 		},
 		"3-2_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/3-2_south.png",
 			"next_state": [
 				{
 					"state_name": "3-2_east",
@@ -474,7 +492,7 @@
 			]
 		},
 		"3-3_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/3-3_east_A.png",
 			"next_state": [
 				{
 					"state_name": "3-3_north",
@@ -487,11 +505,14 @@
 				{
 					"state_name": "3-2_east",
 					"key_input": 38
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"3-3_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/3-3_north.png",
 			"next_state": [
 				{
 					"state_name": "3-3_west",
@@ -508,7 +529,7 @@
 			]
 		},
 		"3-3_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/3-3_west.png",
 			"next_state": [
 				{
 					"state_name": "3-3_south",
@@ -525,7 +546,7 @@
 			]
 		},
 		"3-3_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/3-3_south.png",
 			"next_state": [
 				{
 					"state_name": "3-3_east",
@@ -542,7 +563,7 @@
 			]
 		},
 		"3-4_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/3-4_east.png",
 			"next_state": [
 				{
 					"state_name": "3-4_north",
@@ -559,7 +580,7 @@
 			]
 		},
 		"3-4_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/3-4_north.png",
 			"next_state": [
 				{
 					"state_name": "3-4_west",
@@ -572,7 +593,7 @@
 			]
 		},
 		"3-4_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/3-4_west_A.png",
 			"next_state": [
 				{
 					"state_name": "3-4_south",
@@ -581,11 +602,14 @@
 				{
 					"state_name": "3-4_north",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"3-4_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/3-4_south.png",
 			"next_state": [
 				{
 					"state_name": "3-4_east",
@@ -598,7 +622,7 @@
 			]
 		},
 		"4-3_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/4-3_east.png",
 			"next_state": [
 				{
 					"state_name": "4-3_north",
@@ -611,7 +635,7 @@
 			]
 		},
 		"4-3_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/4-3_north.png",
 			"next_state": [
 				{
 					"state_name": "4-3_west",
@@ -628,7 +652,7 @@
 			]
 		},
 		"4-3_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/4-3_west.png",
 			"next_state": [
 				{
 					"state_name": "4-3_south",
@@ -641,7 +665,7 @@
 			]
 		},
 		"4-3_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/4-3_south.png",
 			"next_state": [
 				{
 					"state_name": "4-3_east",
@@ -658,7 +682,7 @@
 			]
 		},
 		"5-1_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/5-1_east.png",
 			"next_state": [
 				{
 					"state_name": "5-1_north",
@@ -671,7 +695,7 @@
 			]
 		},
 		"5-1_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/5-1_north_A.png",
 			"next_state": [
 				{
 					"state_name": "5-1_west",
@@ -680,11 +704,14 @@
 				{
 					"state_name": "5-1_east",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"5-1_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/5-1_west.png",
 			"next_state": [
 				{
 					"state_name": "5-1_south",
@@ -701,7 +728,7 @@
 			]
 		},
 		"5-1_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/5-1_south_A.png",
 			"next_state": [
 				{
 					"state_name": "5-1_east",
@@ -710,11 +737,14 @@
 				{
 					"state_name": "5-1_west",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"5-2_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/5-2_east.png",
 			"next_state": [
 				{
 					"state_name": "5-2_north",
@@ -731,7 +761,7 @@
 			]
 		},
 		"5-2_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/5-2_north_A.png",
 			"next_state": [
 				{
 					"state_name": "5-2_west",
@@ -740,11 +770,14 @@
 				{
 					"state_name": "5-2_east",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"5-2_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/5-2_west.png",
 			"next_state": [
 				{
 					"state_name": "5-2_south",
@@ -761,7 +794,7 @@
 			]
 		},
 		"5-2_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/5-2_south.png",
 			"next_state": [
 				{
 					"state_name": "5-2_east",
@@ -774,7 +807,7 @@
 			]
 		},
 		"5-3_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/5-3_east.png",
 			"next_state": [
 				{
 					"state_name": "5-3_north",
@@ -791,7 +824,7 @@
 			]
 		},
 		"5-3_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/5-3_north_A.png",
 			"next_state": [
 				{
 					"state_name": "5-3_west",
@@ -800,11 +833,14 @@
 				{
 					"state_name": "5-3_east",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"5-3_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/5-3_west.png",
 			"next_state": [
 				{
 					"state_name": "5-3_south",
@@ -821,7 +857,7 @@
 			]
 		},
 		"5-3_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/5-3_south.png",
 			"next_state": [
 				{
 					"state_name": "5-3_east",
@@ -838,7 +874,7 @@
 			]
 		},
 		"5-4_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/5-4_east.png",
 			"next_state": [
 				{
 					"state_name": "5-4_north",
@@ -855,7 +891,7 @@
 			]
 		},
 		"5-4_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/5-4_north_A.png",
 			"next_state": [
 				{
 					"state_name": "5-4_west",
@@ -864,11 +900,14 @@
 				{
 					"state_name": "5-4_east",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"5-4_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/5-4_west.png",
 			"next_state": [
 				{
 					"state_name": "5-4_south",
@@ -885,7 +924,7 @@
 			]
 		},
 		"5-4_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/5-4_south.png",
 			"next_state": [
 				{
 					"state_name": "5-4_east",
@@ -898,7 +937,7 @@
 			]
 		},
 		"5-5_east": {
-			"bk_img": "imgs/1-1_east.png",
+			"bk_img": "imgs/5-5_east.png",
 			"next_state": [
 				{
 					"state_name": "5-5_north",
@@ -915,7 +954,7 @@
 			]
 		},
 		"5-5_north": {
-			"bk_img": "imgs/1-1_north.png",
+			"bk_img": "imgs/5-5_north_A.png",
 			"next_state": [
 				{
 					"state_name": "5-5_west",
@@ -924,11 +963,14 @@
 				{
 					"state_name": "5-5_east",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		},
 		"5-5_west": {
-			"bk_img": "imgs/1-1_west.png",
+			"bk_img": "imgs/5-5_west.png",
 			"next_state": [
 				{
 					"state_name": "5-5_south",
@@ -941,7 +983,7 @@
 			]
 		},
 		"5-5_south": {
-			"bk_img": "imgs/1-1_south_A.png",
+			"bk_img": "imgs/5-5_south_A.png",
 			"next_state": [
 				{
 					"state_name": "5-5_east",
@@ -950,6 +992,9 @@
 				{
 					"state_name": "5-5_west",
 					"key_input": 39
+				},
+				{
+					"key_input": 32
 				}
 			]
 		}

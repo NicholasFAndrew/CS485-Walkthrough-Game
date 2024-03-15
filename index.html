@@ -101,9 +101,25 @@ document.body.onkeydown = function(e){
 function key_input(what_key){
     for(i=0; i< game_data['states'][current_state]['next_state'].length; i++){
         if( what_key == game_data['states'][current_state]['next_state'][i]['key_input']) {
-            if ( typeof game_data['states'][current_state]['next_state'][i]['state_name'] == "string"){
-               next_state(game_data['states'][current_state]['next_state'][i]['state_name'])
-            }
+			if (what_key == space) {
+				if (game_data['states'][current_state]['bk_img'].endsWith("A.png")){
+					game_data['states'][current_state]['bk_img'] = game_data['states'][current_state]['bk_img'].slice(0, -5) + "B.png";
+					console.log(game_data['states'][current_state]['bk_img']);
+				} else if (game_data['states'][current_state]['bk_img'].endsWith("B.png")) {
+					game_data['states'][current_state]['bk_img'] = game_data['states'][current_state]['bk_img'].slice(0, -5) + "A.png";
+					console.log(game_data['states'][current_state]['bk_img']);
+				}
+				game_data['states'][current_state]['bk_img_loaded'] = new Image();
+				game_data['states'][current_state]['bk_img_loaded'].src = game_data['states'][current_state]['bk_img'];
+				console.log("Loading: " + current_state, game_data['states'][current_state]['bk_img']);
+				game_data['states'][current_state]['bk_img_loaded'].onload = function() {
+					draw(game_data['states'][current_state]['bk_img_loaded']);
+				};
+			} else {
+				if ( typeof game_data['states'][current_state]['next_state'][i]['state_name'] == "string"){
+				next_state(game_data['states'][current_state]['next_state'][i]['state_name'])
+				}
+			}
         } 
     }
 
