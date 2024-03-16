@@ -385,6 +385,10 @@
 				{
 					"state_name": "3-1_south",
 					"key_input": 39
+				},
+				{
+					"state_name": "secret_end_screen",
+					"key_input": 32
 				}
 			]
 		},
@@ -604,6 +608,7 @@
 					"key_input": 39
 				},
 				{
+					"state_name": "normal_end_screen",
 					"key_input": 32
 				}
 			]
@@ -997,6 +1002,12 @@
 					"key_input": 32
 				}
 			]
+		},
+		"normal_end_screen": {
+			"bk_img": "imgs/normalEnding.png"
+		},
+		"secret_end_screen": {
+			"bk_img": "imgs/secretEnding.png"
 		}
 	}
 }

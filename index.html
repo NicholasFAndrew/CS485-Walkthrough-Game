@@ -7,8 +7,7 @@
 <canvas id='mycanvas' style="display:none;margin:0;padding:0;border:1px solid #000000;">
 </canvas>
 
-<div id="splash" style="font-size:100px"> Loading...<br>
-</div>
+<div id="splash" style="background-image: url('imgs/BinaryDungeonSplash.png'); background-size: 100% 100%; background-position: center; width: 100vw; height: 100vh;"></div>
 
 
 <script>
@@ -30,7 +29,22 @@ window.addEventListener('resize', resize)
 
 var current_state;
 var game_data;
-
+var keys = new Set(["imgs/1-5_north_A.png", "imgs/3-3_east_A.png", "imgs/3-4_west_A.png", "imgs/5-1_south_A.png", "imgs/5-5_south_A.png"]);
+var keyPick = new Set(["imgs/1-5_north_B.png", "imgs/3-3_east_B.png", "imgs/3-4_west_B.png", "imgs/5-1_south_B.png", "imgs/5-5_south_B.png"]);
+var lockDoors = new Set(["1-2_west", "1-5_west", "5-1_east", "5-5_west", "3-2_east", "3-4_west"]);
+var keysCollected = 0;
+var turnSound= document.createElement('audio');
+turnSound.setAttribute('src', "sound/oneFootstep.wav");
+var walkSound= document.createElement('audio');
+walkSound.setAttribute('src', "sound/twoFootsteps.wav");
+var noEntry= document.createElement('audio');
+noEntry.setAttribute('src', "sound/noEntry.wav");
+var keyGet= document.createElement('audio');
+keyGet.setAttribute('src', "sound/keyGet.wav");
+var switchUp= document.createElement('audio');
+switchUp.setAttribute('src', "sound/switchUp.wav");
+var switchDown= document.createElement('audio');
+switchDown.setAttribute('src', "sound/switchDown.wav");
 
 
 $.getJSON( "data/map.json", function( data ) {
@@ -78,16 +92,89 @@ function draw_src(src, x, y, w, h) {
 
 function all_loaded() {
     draw(game_data['states']['1-1_east']['bk_img_loaded']); 
-	console.log("Did I even get out of Draw?");
+    console.log("Did I even get out of Draw?");
     console.log(current_state);
-    $('#splash').hide();
+    setTimeout(() => { 
+        $('#splash').hide(); 
+        console.log("Splash hidden after 3 seconds");
+    }, 3000); // 3000 milliseconds = 3 seconds
     console.log("did I try to hide splash?");
-    $('#mycanvas').show();
+	setTimeout(() => { 
+        $('#mycanvas').show(); 
+    }, 3000);
+    
     console.log("did I try to show canvas?");
 }
 
+function isUnlocked(state){
+	if (lockDoors.has(state)){
+		if (state === "1-2_west") {
+			if (game_data['states']['1-1_south']['bk_img'].endsWith("B.png")) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if (state === "1-5_west") {
+			if (game_data['states']['1-2_south']['bk_img'].endsWith("B.png") &&
+				game_data['states']['1-3_south']['bk_img'].endsWith("B.png") &&
+				game_data['states']['1-4_south']['bk_img'].endsWith("A.png")) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if (state === "5-1_east") {
+			if (game_data['states']['5-2_north']['bk_img'].endsWith("B.png") &&
+				game_data['states']['5-3_north']['bk_img'].endsWith("A.png") &&
+				game_data['states']['5-4_north']['bk_img'].endsWith("A.png")) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if (state === "5-5_west") {
+			console.log("Did I check this for room 5-5_west?");
+			if (game_data['states']['5-2_north']['bk_img'].endsWith("B.png") &&
+				game_data['states']['5-3_north']['bk_img'].endsWith("B.png") &&
+				game_data['states']['5-4_north']['bk_img'].endsWith("A.png")) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if (state === "3-4_west") {
+			console.log("Total Keys Collected: " + keysCollected);
+			if (keysCollected >= 3) {
+				return true;
+			} else {
+				return false;
+			}
+		} else if (state === "3-2_east") {
+			if (secretEnding()) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+	} else {
+		console.log("returned TRUE");
+		return true;
+	}
+}
 
-
+function secretEnding() {
+	if (game_data['states']['1-1_south']['bk_img'].endsWith("B.png") &&
+		game_data['states']['1-2_south']['bk_img'].endsWith("A.png") &&
+		game_data['states']['1-3_south']['bk_img'].endsWith("A.png") &&
+		game_data['states']['1-4_south']['bk_img'].endsWith("B.png") &&
+		game_data['states']['1-5_south']['bk_img'].endsWith("B.png") &&
+		game_data['states']['5-5_north']['bk_img'].endsWith("B.png") &&
+		game_data['states']['5-4_north']['bk_img'].endsWith("A.png") &&
+		game_data['states']['5-3_north']['bk_img'].endsWith("B.png") &&
+		game_data['states']['5-2_north']['bk_img'].endsWith("A.png") &&
+		game_data['states']['5-1_north']['bk_img'].endsWith("B.png")) {
+		return true;
+	} else {
+		return false;
+	}
+}
 const up_arrow = 38;
 const space = 32;
 const left_arrow = 37;
@@ -103,11 +190,32 @@ function key_input(what_key){
         if( what_key == game_data['states'][current_state]['next_state'][i]['key_input']) {
 			if (what_key == space) {
 				if (game_data['states'][current_state]['bk_img'].endsWith("A.png")){
-					game_data['states'][current_state]['bk_img'] = game_data['states'][current_state]['bk_img'].slice(0, -5) + "B.png";
+					if (keys.has(game_data['states'][current_state]['bk_img'])){
+						if (current_state === "3-3_east") {
+							if (secretEnding()) {
+								keyGet.play();
+								game_data['states'][current_state]['bk_img'] = game_data['states'][current_state]['bk_img'].slice(0, -5) + "B.png";
+							}
+						} else {
+							game_data['states'][current_state]['bk_img'] = game_data['states'][current_state]['bk_img'].slice(0, -5) + "B.png";
+							keyGet.play();
+							keysCollected++;
+						}
+					} else if (current_state === "3-3_east") {
+						if (secretEnding()){
+							game_data['states'][current_state]['bk_img'] = game_data['states'][current_state]['bk_img'].slice(0, -5) + "B.png";
+						}
+					} else {
+						game_data['states'][current_state]['bk_img'] = game_data['states'][current_state]['bk_img'].slice(0, -5) + "B.png";
+						switchDown.play();
+					}
 					console.log(game_data['states'][current_state]['bk_img']);
 				} else if (game_data['states'][current_state]['bk_img'].endsWith("B.png")) {
-					game_data['states'][current_state]['bk_img'] = game_data['states'][current_state]['bk_img'].slice(0, -5) + "A.png";
-					console.log(game_data['states'][current_state]['bk_img']);
+					if (!keyPick.has(game_data['states'][current_state]['bk_img'])){
+						game_data['states'][current_state]['bk_img'] = game_data['states'][current_state]['bk_img'].slice(0, -5) + "A.png";
+						switchUp.play();
+						console.log(game_data['states'][current_state]['bk_img']);
+					}
 				}
 				game_data['states'][current_state]['bk_img_loaded'] = new Image();
 				game_data['states'][current_state]['bk_img_loaded'].src = game_data['states'][current_state]['bk_img'];
@@ -115,7 +223,23 @@ function key_input(what_key){
 				game_data['states'][current_state]['bk_img_loaded'].onload = function() {
 					draw(game_data['states'][current_state]['bk_img_loaded']);
 				};
+				if (what_key === space &&
+					(current_state === "3-4_west" ||
+					current_state === "3-1_east")) {
+					if ( typeof game_data['states'][current_state]['next_state'][i]['state_name'] == "string"){
+					next_state(game_data['states'][current_state]['next_state'][i]['state_name'])
+					}
+				}
 			} else {
+				if (what_key === up_arrow) {
+					if (isUnlocked(game_data['states'][current_state]['next_state'][i]['state_name'])) {
+                        walkSound.play();
+                    } else {
+						noEntry.play();
+					}
+				} else {
+					turnSound.play();
+				}
 				if ( typeof game_data['states'][current_state]['next_state'][i]['state_name'] == "string"){
 				next_state(game_data['states'][current_state]['next_state'][i]['state_name'])
 				}
@@ -127,34 +251,23 @@ function key_input(what_key){
 }
 
 function next_state(state) {
-    console.log("Current State = " + current_state + " --> New State= " + state);
-    current_state = state;
+	if (isUnlocked(state)) {
+		console.log("Current State = " + current_state + " --> New State= " + state);
+		current_state = state;
 
-    if (!game_data['states'][current_state]) {
-        console.error("State data for state " + current_state + " is undefined!");
-        return;
-    }
+		if (!game_data['states'][current_state]) {
+			console.error("State data for state " + current_state + " is undefined!");
+			return;
+		}
 
-    if (game_data['states'][current_state]['bk_img_loaded'].complete) {
-        draw(game_data['states'][current_state]['bk_img_loaded']);
-    } else {
-        game_data['states'][current_state]['bk_img_loaded'].onload = function() {
-            draw(game_data['states'][current_state]['bk_img_loaded']);
-        };
-    }
-
-    if (game_data['states'][current_state]['other_imgs'] != null) {
-        for (var i = 0; i < game_data['states'][current_state]['other_imgs'].length; i++) {
-            console.log(game_data['states'][current_state]['other_imgs'][i]['src']);
-            draw_src(
-                game_data['states'][current_state]['other_imgs'][i]['src'],
-                game_data['states'][current_state]['other_imgs'][i]['x_cord'],
-                game_data['states'][current_state]['other_imgs'][i]['y_cord'],
-                game_data['states'][current_state]['other_imgs'][i]['width'],
-                game_data['states'][current_state]['other_imgs'][i]['height']
-            );
-        }
-    }
+		if (game_data['states'][current_state]['bk_img_loaded'].complete) {
+			draw(game_data['states'][current_state]['bk_img_loaded']);
+		} else {
+			game_data['states'][current_state]['bk_img_loaded'].onload = function() {
+				draw(game_data['states'][current_state]['bk_img_loaded']);
+			};
+		}
+	}
 }
 
 
