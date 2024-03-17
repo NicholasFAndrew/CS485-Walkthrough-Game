@@ -32,6 +32,7 @@ var game_data;
 var keys = new Set(["imgs/1-5_north_A.png", "imgs/3-3_east_A.png", "imgs/3-4_west_A.png", "imgs/5-1_south_A.png", "imgs/5-5_south_A.png"]);
 var keyPick = new Set(["imgs/1-5_north_B.png", "imgs/3-3_east_B.png", "imgs/3-4_west_B.png", "imgs/5-1_south_B.png", "imgs/5-5_south_B.png"]);
 var lockDoors = new Set(["1-2_west", "1-5_west", "5-1_east", "5-5_west", "3-2_east", "3-4_west"]);
+var doorsToCreak = new Set(["1-1_west", "1-2_east", "1-4_west", "1-5_east", "3-3_west", "3-4_east", "5-1_west", "5-2_east", "5-4_west", "5-5_east"]);
 var keysCollected = 0;
 var turnSound= document.createElement('audio');
 turnSound.setAttribute('src', "sound/oneFootstep.wav");
@@ -45,6 +46,10 @@ var switchUp= document.createElement('audio');
 switchUp.setAttribute('src', "sound/switchUp.wav");
 var switchDown= document.createElement('audio');
 switchDown.setAttribute('src', "sound/switchDown.wav");
+var explosion= document.createElement('audio');
+explosion.setAttribute('src', "sound/explosion.wav");
+var doorCreak= document.createElement('audio');
+doorCreak.setAttribute('src', "sound/doorCreak.wav");
 
 
 $.getJSON( "data/map.json", function( data ) {
@@ -193,7 +198,8 @@ function key_input(what_key){
 					if (keys.has(game_data['states'][current_state]['bk_img'])){
 						if (current_state === "3-3_east") {
 							if (secretEnding()) {
-								keyGet.play();
+								console.log("tried to play explosion");
+								explosion.play();
 								game_data['states'][current_state]['bk_img'] = game_data['states'][current_state]['bk_img'].slice(0, -5) + "B.png";
 							}
 						} else {
@@ -233,6 +239,10 @@ function key_input(what_key){
 			} else {
 				if (what_key === up_arrow) {
 					if (isUnlocked(game_data['states'][current_state]['next_state'][i]['state_name'])) {
+						console.log("This is the current state: " + current_state);
+						if (doorsToCreak.has(current_state)) {
+							doorCreak.play();
+						}
                         walkSound.play();
                     } else {
 						noEntry.play();
